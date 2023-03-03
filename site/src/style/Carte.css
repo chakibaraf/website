@@ -1,0 +1,11 @@
+@import 'leaflet/dist/leaflet.css';
+
+.leaflet-container {
+  width: 50vh;
+  height:50vh;
+  display: 'flex';
+  flex:1;
+  position: relative;
+  
+}
+
