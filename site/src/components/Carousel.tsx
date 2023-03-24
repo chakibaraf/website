@@ -13,10 +13,10 @@ import bigImage4 from '../assets/carousel/image-product-4.jpg';
 import miniImage1 from '../assets/carousel/image-product-1-thumbnail.jpg';
 import miniImage2 from '../assets/carousel/image-product-2-thumbnail.jpg';
 import miniImage3 from '../assets/carousel/image-product-3-thumbnail.jpg';
-import miniImage4 from '../assets/carousel/image-product-4-thumbnail.jpg'
+import miniImage4 from '../assets/carousel/image-product-4-thumbnail.jpg';
 
 
-export const Carousel = () => {
+export  const Carousel = () => {
   const bigImages = [
     bigImage1,
     bigImage2,
@@ -127,3 +127,4 @@ export const Carousel = () => {
   );
 }
 
+export default Carousel;

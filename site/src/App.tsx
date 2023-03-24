@@ -1,14 +1,15 @@
-import React, { Fragment } from 'react';
-import './App.css';
-import Home from './pages/Home';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Collections } from './pages/Collections';
-import { Contact } from './pages/Contact';
-import { Apropos } from './pages/Apropos';
 
-import './App.css';
-import { Gallerie } from './components/Gallerie';
-import NavbarMenu from './layout/NavbarMenu';
+
+import { Fragment } from 'react';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import AuthGuard from './helpers/AuthGuard';
+import AdminRouter from './pages/admin/AdminRouter';
+import AuthRouter from './pages/auth/AuthRouter';
+
+
+
+
+import { PublicRouter } from './pages/PublicRouter';
 
 
 
@@ -17,13 +18,16 @@ function App() {
 
     <Fragment>
       <BrowserRouter>
-      <NavbarMenu/>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/collections' element={<Collections />} />
-          <Route path='/apropos' element={<Apropos />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/collections' element={<Gallerie />} />
+
+          <Route path='/*' element={<PublicRouter />}/>
+          <Route path='/admin/*' element={
+            <AuthGuard>
+            <AdminRouter/>
+          </AuthGuard>
+          }/>
+          
+          <Route path='/auth/*' element={<AuthRouter/>}/>
         </Routes>
       </BrowserRouter>
     </Fragment>

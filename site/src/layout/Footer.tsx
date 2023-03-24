@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
 
 export const Footer = () => {
@@ -20,7 +21,13 @@ export const Footer = () => {
             <a href="#" className="mr-4 hover:underline md:mr-6 text-white">Licensing</a>
         </li>
         <li>
-            <a href="#" className="hover:underline text-white">Contact</a>
+            <a href="#" className="mr-4 hover:underline text-white">Contact</a>
+
+        </li>
+        <li>
+            <Link to={'/auth'} >
+           
+            admin</Link>
         </li>
     </ul>
     </div>
