@@ -16,38 +16,32 @@ type LoginInputs = {
   codeacces: string;
   email: string;
   
-
 }
 
 
-const Login = ( ) => {
+const LoginUser = () => {
   let navigate = useNavigate()
 
   const [showInscription, setInscription] = useState(false);
   const { register, handleSubmit, reset } = useForm<LoginInputs>()
 
   const handleFormSubmit: SubmitHandler<LoginInputs> = async (data) => {
-    accountService.login(data)
+   accountService.loginUser(data)
       .then(response => {
-       
-         // Récupérer le rôle de l'utilisateur
-         accountService.saveToken(response.data.access_token)
-         // Stocker le rôle dans le Local Storage
-       
-        
-         navigate("/admin");
-        
+  
+        accountService.saveUserToken(response.data.access_token)
+        navigate('collection')
       })
       .catch(error => {
         console.error(error);
       })
     reset();
   }
-
+  
 
   return (
     <>
-      <h1 className='mt-40'> Portail Administrateur </h1>
+      <h1 className='mt-40'> veuillez vous connecter pour voir la collection </h1>
       <form onSubmit={handleSubmit(handleFormSubmit)} className='flex flex-col border mt-40 bg-gray-800  items-center p-8 rounded-md'>
         <h1 className='text-white'> Formulaire de connexion</h1>
         <div className='flex flex-col items-center'>
@@ -67,7 +61,7 @@ const Login = ( ) => {
 
       </div>
       {showInscription ? (
-        <LoginInscription />
+       <LoginInscription/>
       ) : (
         <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center' onClick={() => setInscription(true)}>Créer un nouveau administrateur</button>
       )}
@@ -75,4 +69,4 @@ const Login = ( ) => {
   )
 }
 
-export default Login
+export default LoginUser;

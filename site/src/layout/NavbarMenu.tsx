@@ -28,7 +28,7 @@ const NavbarMenu = () => {
           <nav className={`sm:flex sm:items-center sm:pb-0 pb-12 absolute 
           sm:static sm:z-auto z-[-1] left-0 w-full sm:w-auto sm:pl-0 pl-9 bg-black ${open ? 'top-20' : 'top-[-490px]'}`}>
             <NavLink className='sm:ml-8 mt-2 mr-5 flex flex-col text-white text-xl no-underline hover:no-underline' to='/'>Accueil</NavLink>
-            <NavLink className='sm:ml-8 mt-2 mr-5 flex flex-col text-white text-xl no-underline hover:no-underline' to='/collections'>Collections</NavLink>
+            <NavLink className='sm:ml-8 mt-2 mr-5 flex flex-col text-white text-xl no-underline hover:no-underline' to='/collection'>Collections</NavLink>
             <NavLink className='sm:ml-8 mt-2 mr-5 flex flex-col text-white text-xl no-underline hover:no-underline' to='/apropos'>À propos</NavLink>
             <NavLink className='sm:ml-8 mt-2 mr-5 text-white text-xl no-underline hover:no-underline' to='/contact'>Contact</NavLink>
           </nav>
