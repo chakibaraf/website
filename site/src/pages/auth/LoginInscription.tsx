@@ -27,7 +27,7 @@ const LoginInscription = () => {
     
   return (
     <div>
-        <form onSubmit={handleSubmit(handleFormInscriptionSubmit)} className='flex flex-col border mt-40 bg-gray-800  items-center p-8 rounded-md'>
+        <form onSubmit={handleSubmit(handleFormInscriptionSubmit)} className='flex flex-col border bg-gray-800  items-center p-8 rounded-md'>
           <h1 className='text-white'> Formulaire d'inscription</h1>
           <div className='flex flex-col items-center'>
             <label htmlFor="name" className='mb-2 text-white'>codeacces</label>
