@@ -2,6 +2,9 @@ import React from 'react';
 import '../style/Collec.css';
 import { Carousel } from '../components/Carousel';
 import { Footer } from '../layout/Footer'
+import { ArticleList } from '../model/ArticleList';
+import ArticleCard from '../components/ArticleCard';
+//import { IArticle } from '../model/Article';
 
 export const Collections = () => {
   return (
@@ -20,6 +23,16 @@ export const Collections = () => {
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
+
+    </div>
+    <div className=''>
+      {ArticleList.map((article) =>(
+        <ArticleCard
+        name={article.name}
+        image={article.image}
+        description={article.description}
+        />
+        ))}
 
     </div>
   </main>    
