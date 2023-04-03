@@ -1,4 +1,3 @@
-import React from 'react'
 import { Footer } from '../layout/Footer'
 export const Apropos = () => {
   return (
@@ -7,7 +6,7 @@ export const Apropos = () => {
 
         <h1 className=' text-center text-justify...'>Présentation du groupe </h1>
 
-        <p className='sm:flex ml-20  mt-20  mt-10 w-3/4 text-justify'> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia tempora tempore autem hic, fugiat quae nemo qui rem unde quis
+        <p className='sm:flex ml-20  mt-10 w-3/4 text-justify'> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia tempora tempore autem hic, fugiat quae nemo qui rem unde quis
           voluptates eaque soluta quasi aliquam dolores cupiditate ea accusantium sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia tempora tempore autem hic, fugiat quae nemo qui rem unde quis
           voluptates eaque soluta quasi aliquam dolores cupiditate ea accusantium sequi</p>
       </div>

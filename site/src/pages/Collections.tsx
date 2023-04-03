@@ -1,4 +1,3 @@
-import React from 'react';
 import '../style/Collec.css';
 import { Carousel } from '../components/Carousel';
 import { Footer } from '../layout/Footer'
