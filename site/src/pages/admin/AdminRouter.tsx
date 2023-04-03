@@ -11,7 +11,8 @@ const AdminRouter = () => {
   useEffect(() => {
     async function getRoleFunction(token: string) {
       try {
-        const role = await getRole(token);
+        const response = await getRole(token);
+        const role = response.data
         if (role !== "admin") return route("/");
       } catch (error) {
         route("/");

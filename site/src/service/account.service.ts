@@ -16,12 +16,12 @@ let login = (data: DataUI) => {
   return Axios.post("auth/login", data);
 };
 
-export const getRole: (token: string) => Promise<string> = async (
+export const getRole = async (
   token: string
 ) => {
   return await Axios.get("/admins/role", {
     headers: {
-      "Authorization": "Barear " + token,
+      "x-auth-token": "Barear " + token,
     },
   });
 };
