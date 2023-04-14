@@ -1,4 +1,4 @@
-import React from 'react';
+
 import product from '../assets/gallerie/sante3.jpg';
 import casque from '../assets/gallerie/casque.png'
 import sante1 from '../assets/gallerie/sante1.jpg'
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export const Gallerie = () => {
   return (
     <>
-      <h1 className='mt-20 text-justify text-center ...'> Nos Produits :</h1>
+      <h1 className='mt-20 font-semibold text-justify text-center ...'> Nos Produits :</h1>
     <div className='sm:flex mt-10 justify-center space-x-4 ...'>
 
       <Link to='/collections'>

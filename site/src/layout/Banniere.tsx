@@ -12,7 +12,7 @@ const Banniere = () => {
   return (
     <Fragment>
       <div className="bg-gray-500 opacity-70 py-4 mt-40 h-80">
-        <h1 className="text-white text-center mt-10">
+        <h1 className="text-white text-center mt-1 font-bold ">
           " Il nous ont fait confiance "
         </h1>
         <h4 className="text-white ml-20"> Nos partenaires :</h4>

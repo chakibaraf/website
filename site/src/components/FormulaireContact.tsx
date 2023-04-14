@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { useForm, SubmitHandler } from "react-hook-form";
 
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useSnackbar } from 'notistack';
 
 import { Carte } from '../components/Carte';
 import '../style/Carte.css'
@@ -15,18 +15,20 @@ type FormInputs = {
 }
 
 export const FormulaireContact = () => {
-    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-
+    const {enqueueSnackbar} = useSnackbar();
+   
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormInputs>()
 
     const handleFormSubmit: SubmitHandler<FormInputs> = async (data) => {
         try {
 
             const response = await sendFormulaireService(data);
+            enqueueSnackbar('formuliare envoyé avec succés', {variant: 'success'});
             console.log(response);
-            setIsFormSubmitted(true)
+            
             reset();
         } catch (error) {
+            enqueueSnackbar('erreur', {variant: 'error'});
             console.error(error);
         }
     };
@@ -50,9 +52,7 @@ export const FormulaireContact = () => {
                         <h3 className='font-extrabold mt-1 text-3xl sm:flex '>Any Questions ?</h3>
                         <span className='mt-2 flex '> Bienvenue au  centre  d'assistance
                         </span>
-                         {isFormSubmitted && (
-                            <p className="text-green-500">Formulaire envoyé avec succés!</p>
-                        )}
+                         
                         <div className='center '>
 
                             <label className='block mt-5' htmlFor='subject'></label>

@@ -1,8 +1,8 @@
-import React from 'react'
+
 
 const Erreur = () => {
   return (
-    <div>Erreur</div>
+    <div></div>
   )
 }
 

@@ -26,6 +26,8 @@ export const getRole = async (
   });
 };
 
+
+
 /**service pour login user  */
 let loginUser = (data: DataUI) => {
   return Axios.post("auth/collection", data);

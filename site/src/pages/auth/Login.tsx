@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { accountService } from "../../service/account.service";
 import LoginInscription from "./LoginInscription";
+import { useSnackbar } from 'notistack';
+import { FormGroupe } from "./LoginUser";
 
 type LoginInputs = {
   password: string;
@@ -13,6 +15,7 @@ type LoginInputs = {
 };
 
 const Login = () => {
+  const { enqueueSnackbar } = useSnackbar();
   let navigate = useNavigate();
 
   const [showInscription, setInscription] = useState(false);
@@ -25,55 +28,80 @@ const Login = () => {
         // Récupérer le rôle de l'utilisateur
         accountService.saveToken(response.data.access_token);
         // Stocker le rôle dans le Local Storage
-
+        enqueueSnackbar('vous etes connecté avec succes', { variant: 'success' });
         navigate("/admin");
       })
       .catch((error) => {
         console.error(error);
+        enqueueSnackbar('erreur d identification', { variant: 'error' });
       });
     reset();
   };
 
+  const containerStyle =
+    "h-full flex flex-col items-center justify-center gap-3 bg-gray-300";
+  if (showInscription) return <div className={containerStyle}>
+    <LoginInscription />
+    <button
+     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center"
+     onClick={() => setInscription(false)}
+     >
+     Login
+   </button>
+  </div>
+
   return (
-    <>
-      <h1 className="mt-40"> Portail Administrateur </h1>
+    <div className={containerStyle}>
+      <h1 className="mt-40 text"> Portail Administrateur </h1>
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
-        className="flex flex-col border mt-40 bg-gray-800  items-center p-8 rounded-md"
+        className="flex flex-col border mt-10 bg-gray-800  p-8 rounded-md"
       >
         <h1 className="text-white"> Formulaire de connexion</h1>
-        <div className="flex flex-col items-center">
-          <label htmlFor="login" className="mb-2 text-white">
-            identification{" "}
-          </label>
-          <input {...register("email")} type="text" name="email" />
-        </div>
-        <div className="flex flex-col items-center">
-          <label htmlFor="password" className="mb-2 text-white">
-            mot de passe
-          </label>
-          <input {...register("password")} type="password" name="password" />
-        </div>
-        <div>
+        <FormGroupe
+          label="identification"
+          name="email"
+          register={register("email")}
+          type="text"
+        />
+        <FormGroupe
+          label="mot de passe"
+          name="password"
+          register={register("password")}
+          type="password"
+        />
+
+        <div className="self-end">
           <button className="bg-gray-500 hover:bg-blue-700 py-2 px-4 rounded mt-2 text-white">
             connexion
           </button>
         </div>
-      </form>
 
-      <div></div>
-      {showInscription ? (
-        <LoginInscription />
-      ) : (
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center"
-          onClick={() => setInscription(true)}
-        >
-          Créer un nouveau administrateur
-        </button>
-      )}
-    </>
+      </form>
+      <Switcher setInscription={setInscription} />
+
+
+    </div>
   );
 };
+const Switcher = ({
+  setInscription,
+}: {
+  setInscription: (value: boolean) => void;
+}) => {
+  return (
+    <>
+    <button
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center"
+      onClick={() => setInscription(true)}
+      >
+      Créer un nouveau administrateur
+    </button>
+    
+     </>
+     
+  );
+};
+
 
 export default Login;

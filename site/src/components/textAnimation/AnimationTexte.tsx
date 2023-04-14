@@ -52,7 +52,7 @@ const AnimationTexte: React.FC<Props> = ({ text }) => {
 
   // retourner un élément div contenant le texte actuel, avec une référence pour l'IntersectionObserver
   return (
-    <div ref={targetRef}>
+    <div className='font-mono' ref={targetRef}>
       {currentText}
     </div>
   );

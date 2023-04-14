@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../style/index.css";
 import "../style/Caroussel.css";
 import "slick-carousel/slick/slick.css";

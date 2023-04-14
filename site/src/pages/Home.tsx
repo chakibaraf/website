@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { About } from '../components/About'
 import { ButtonApropos } from '../components/boutonAnimation/ButtonApropos'
 import ImagePresentation from '../components/ImagePresentation'

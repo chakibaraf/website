@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import '../style/Carte.css';

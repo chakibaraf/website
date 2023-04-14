@@ -4,7 +4,7 @@ export const Apropos = () => {
     <>
       <div className='ml-15 mt-40 justify-content-center'>
 
-        <h1 className=' text-center text-justify...'>Présentation du groupe </h1>
+        <h1 className='font-semibold text-center text-justify...'>Présentation du groupe </h1>
 
         <p className='sm:flex ml-20  mt-10 w-3/4 text-justify'> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia tempora tempore autem hic, fugiat quae nemo qui rem unde quis
           voluptates eaque soluta quasi aliquam dolores cupiditate ea accusantium sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia tempora tempore autem hic, fugiat quae nemo qui rem unde quis
@@ -14,7 +14,7 @@ export const Apropos = () => {
 
       <div className='mt-20'>
 
-        <h2 className='text-center'> 1 Nos missions </h2>
+        <h2 className='font-semibold text-center'> 1 Nos missions </h2>
 
         
       </div>
@@ -32,7 +32,7 @@ export const Apropos = () => {
        
       <div className='mt-20'>
 
-        <h2 className='text-center mt-10 text-justify...'> 2 Notre histoire </h2>
+        <h2 className='font-semibold text-center mt-10 text-justify...'> 2 Notre histoire </h2>
       </div>
 
 
@@ -48,7 +48,7 @@ export const Apropos = () => {
 
       <div className='mt-20'>
 
-        <h2 className='text-center'> 3 Nos projets </h2>
+        <h2 className='font-semibold text-center'> 3 Nos projets </h2>
    
       </div>
       <div className="sm:flex ml-20 mr-10 mt-20 justify-content-center">

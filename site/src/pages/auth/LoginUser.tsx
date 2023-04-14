@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { accountService } from "../../service/account.service";
+import { useSnackbar } from 'notistack';
 
 type LoginInputs = {
   password: string;
@@ -12,6 +13,7 @@ type LoginInputs = {
 
 const LoginUser = () => {
   let navigate = useNavigate();
+  const {enqueueSnackbar} = useSnackbar();
 
   const { register, handleSubmit, reset } = useForm<LoginInputs>();
 
@@ -20,9 +22,11 @@ const LoginUser = () => {
       .loginUser(data)
       .then((response) => {
         accountService.saveUserToken(response.data.access_token);
+        enqueueSnackbar('vous etes connecté avec succes', {variant: 'success'});
         navigate("collection");
       })
       .catch((error) => {
+        enqueueSnackbar('erreur d identification', {variant: 'error'});
         console.error(error);
       });
     reset();
@@ -69,7 +73,7 @@ type FormUi = {
   name: string;
 };
 
-const FormGroupe = ({ label, type, name, register }: FormUi) => {
+export const FormGroupe = ({ label, type, name, register }: FormUi) => {
   return (
     <div className="flex flex-col gap-1">
       <label className="text-white">{label}</label>
@@ -83,19 +87,5 @@ const FormGroupe = ({ label, type, name, register }: FormUi) => {
   );
 };
 
-const Switcher = ({
-  setInscription,
-}: {
-  setInscription: (value: boolean) => void;
-}) => {
-  return (
-    <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded items-center"
-      onClick={() => setInscription(true)}
-    >
-      Créer un nouveau administrateur
-    </button>
-  );
-};
 
 export default LoginUser;
