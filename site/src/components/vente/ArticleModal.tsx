@@ -25,6 +25,11 @@ const ArticleModal = (props: IArticleModal) => {
 
 
                 </div>
+                
+                <div className="font-semibold text-5xl ">
+                    {props.article !== undefined ? props.article.quantity : ""}
+                </div>
+
                 <div className="items-center justify-center">
                     <h4 className="font-semibold">
 

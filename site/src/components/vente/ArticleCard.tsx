@@ -3,7 +3,7 @@ import { IArticle } from "../../model/Article"
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import {useContext, useState} from 'react';
+import { useContext, useState } from 'react';
 import { ArticleContext } from "../../pages/Collections";
 
 
@@ -13,46 +13,68 @@ interface IArticleCard {
 
 
 
+
 }
 
 
 
 const ArticleCard = (props: IArticleCard) => {
-  const containerStyle = 'border-zinc-900  shadow-md  bg-orange-100 rounded p-1 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl';
-  
-  const [articles,setArticles] = useState(useContext(ArticleContext));
+  const containerStyle = 'border-zinc-900  shadow-md  bg-gradient-to-r from-yellow-400 to-orange-500 rounded p-1 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl';
 
- 
+  const [articles, setArticles] = useContext(ArticleContext);
+  const [quantity, setQuantity] = useState(1);
   console.log(articles)
-  console.log(props.article.liked)
+
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuantity(Number(event.target.value));
+  };
+
+  const handleAddToCart = () => {
+    const articleToChange = articles.findIndex((article) => {
+      return article.name === props.article.name;
+    });
+
+    const articleupdate = [...articles];
+    articleupdate[articleToChange] = {
+      ...props.article,
+      quantity: props.article.quantity,
+    }
+
+    setArticles(articleupdate);
+  };
+
+
 
 
 
   return (
-   
+
     <div className={containerStyle}>
+    
       <Checkbox
-        onClick={()=>{
-          const articleToChange = articles.findIndex((article)=>{
-            return article.name === props.article.name;
+        icon={<FavoriteBorder />}
+        checkedIcon={<Favorite />}
+        
+        checked={props.article.liked}
+
+        onClick={() => {
+          
+          const articleToChange = articles.findIndex((article) => {
+            return article.name === props.article.name
           }
           );
           const articleupdate = [...articles];
-          articleupdate[articleToChange]={
+          articleupdate[articleToChange] = {
             ...props.article,
             liked: !props.article.liked,
           };
           setArticles(articleupdate);
         }}
-        icon={<FavoriteBorder />}
-        checkedIcon={<Favorite />}
-        name="checkdh"
-       checked={props.article.liked}
-        
-        />
-   
+
+      />
+    
       <div onClick={() => props.openModal(props.article)}>
-        
+
 
         <div className='gap-6 overflow-hidden'>
           <img src={props.article.image} alt="" />
@@ -60,11 +82,18 @@ const ArticleCard = (props: IArticleCard) => {
           <h1 className='text-lg font-semibold'>{props.article.name}</h1>
           <p className='font-mono  '>
           </p>
+
         </div>
       </div>
-
+          <div className="flex justify-center items-center">
+            <button onClick={() => setQuantity(quantity - 1)}>-</button>
+            <input type="number" className="w-12 text-sm text-center" value={quantity} onChange={handleQuantityChange} />
+            <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            <button onClick={handleAddToCart}></button>
+          </div>
     </div>
 
+     
   )
 }
 

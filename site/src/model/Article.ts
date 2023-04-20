@@ -4,7 +4,7 @@ export interface IArticle {
     image:any;
     description :string;
     liked:boolean;
-    
+    quantity?:number;
 }
 
 export class Article implements IArticle{
@@ -13,17 +13,20 @@ export class Article implements IArticle{
     image;
     description;    
     liked;
+    quantity;
   
     constructor(
      name:string,
       image:any, 
       description:string ,
-      liked:boolean
+      liked:boolean,
+      quantity?:number,
       ){
             this.name=name;
             this.image=image;
             this.description=description;
             this.liked=liked;
+            this.quantity=quantity;
            
         }
     

@@ -39,7 +39,7 @@ export const FormulaireContact = () => {
         <>
            
             
-            <h3 className=' font-extrabold ml-20 mt-40 text-3xl sm:flex mt-40'>Contactez-nous</h3>
+            <h3 className=' font-extrabold ml-20  text-3xl sm:flex mt-40'>Contactez-nous</h3>
             <div className='flex justify-center items-center'>
 
                 <div className='w-full sm:flex'>
