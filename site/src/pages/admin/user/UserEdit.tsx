@@ -25,7 +25,6 @@ export const UserEdit = () => {
     const handleAddUser: SubmitHandler<User> = async (data:User) => {
       userService.createUser(data)
           .then(response => {
-            console.log(response.data)
             setUsers([...users, response.data]);
           })
           .catch(error => {

@@ -15,10 +15,8 @@ type Props = {
  * si isLogged renvoie true utilisateur connecté
  *  donc condition fausse renvoie children */
 const AuthGuard = ({ children }: Props) => {
-    
     if(!accountService.isLogged()){
         return <Navigate to="/auth/login"/>
-
     }
  return children
 }
