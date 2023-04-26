@@ -19,7 +19,7 @@ export const MenuAdmin = () => {
             <li> <Link className=' font-semibold no-underline text-black' to='/admin/user/edit'>Liste des utilisateurs</Link></li>
         </ul>
         <div className='flex justify-end '>
-        <button onClick={logout} className="bg-green-500 hover:bg-blue-700 py-2 px-4 items-center rounded ">Logout</button>
+        <button onClick={logout} className="bg-green-500 hover:bg-blue-700 py-2 px-4 items-center rounded mr-10 mb-10 ">Logout</button>
          </div>
 
     </div>

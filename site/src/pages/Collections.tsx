@@ -99,13 +99,14 @@ export const Collections = () => {
       <h1 className='font-extrabold p-10'> Liste de nos articles  </h1>
         
       <ArticleContext.Provider value={[articles,setArticles]}>
-        <Likebar  filter={handlesearch} likefilter={likefilter} />
+        <Likebar  filter={handlesearch} likefilter={likefilter} handleSendData={()=>{}} />
         <div className={containerStyle}>
           {articleDisplayed.map((article) => (
             <ArticleCard
               key={uuid()}
               article={article}
               openModal={setArticleOpen}  
+             
             />
           ))}
 

@@ -1,14 +1,18 @@
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { sendDataToBackend } from '../../service/SendCard';
+import { ArticleContext } from '../../pages/Collections';
+
 interface Ilikebar {
     filter:Function
     likefilter:Function;
+    handleSendData:Function
 }
 
 export const Likebar = (props:Ilikebar) => {
+  const [articles]=useContext(ArticleContext)
     const [like,setLike]= useState(false);
     const [showInput, setShowInput] = useState(false);
     console.log(like)
@@ -19,17 +23,17 @@ export const Likebar = (props:Ilikebar) => {
         setShowInput(!showInput);
       }
       const handleSendData = () => {
-        sendDataToBackend(like);
+        sendDataToBackend(articles);
       }
   return (
     <div>
-        <div   className="flex flex-row-reverse items-center bg-gradient-to-r from-yellow-400 to-orange-500">
+        <div className="flex flex-row-reverse items-center bg-gradient-to-r from-yellow-400 to-orange-500">
 
         <Checkbox
        onClick={activateLikeFilter}
        icon={<FavoriteBorder />}
        checkedIcon={<Favorite />}
-       checked={like}
+       checked={like}  
        />
         <input 
         placeholder="search.."
@@ -44,7 +48,7 @@ export const Likebar = (props:Ilikebar) => {
           <div className="flex flex-col items-center justify-center mt-10">
               <p className='font-semibold'> Veuillez renseignez votre mail et cliquer sur envoyez , pour demander un devis </p>
 
-          <input placeholder="Votre email" className='mt-10'/>
+          <input placeholder="Votre email" className='mt-10' name='email'/>
                  <button  onClick={handleSendData} className='bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-md mt-3'>Envoyer</button>
           </div>
             
