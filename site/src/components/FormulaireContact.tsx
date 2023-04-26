@@ -24,7 +24,6 @@ export const FormulaireContact = () => {
 
             const response = await sendFormulaireService(data);
             enqueueSnackbar('formuliare envoyé avec succés', {variant: 'success'});
-            console.log(response);
             
             reset();
         } catch (error) {

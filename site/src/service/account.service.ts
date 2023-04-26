@@ -16,17 +16,13 @@ let login = (data: DataUI) => {
   return Axios.post("auth/login", data);
 };
 
-export const getRole = async (
-  token: string
-) => {
+export const getRole = async (token: string) => {
   return await Axios.get("/admins/role", {
     headers: {
       "x-auth-token": "Barear " + token,
     },
   });
 };
-
-
 
 /**service pour login user  */
 let loginUser = (data: DataUI) => {
@@ -36,6 +32,16 @@ let loginUser = (data: DataUI) => {
 /**service pour inscription  */
 let inscription = (data: DataUI) => {
   return Axios.post("admins", data);
+};
+
+// get articles
+const axiosGetArticles = () => {
+  return Axios.get("articles");
+};
+
+// send articles to save
+const axiosSendArticles = (data: any) => {
+  return Axios.post("/articles/card", data);
 };
 
 /******************************* */
@@ -68,7 +74,7 @@ let logout = () => {
  */
 let isLogged = () => {
   let token = localStorage.getItem(tokenName);
-  return !!token;
+  return token;
 };
 /*
 let isLoggedUser = () => {
@@ -105,4 +111,6 @@ export const accountService = {
   getToken,
   getUserRole,
   hasRole,
+  axiosGetArticles,
+  axiosSendArticles
 };

@@ -22,7 +22,6 @@ const LoginInscription = () => {
       accountService.inscription(data)
           .then(response => {
             enqueueSnackbar('nouvel admnistrateur crée', { variant: 'success' });
-            console.log(response.data)
           })
           .catch(error => {
             enqueueSnackbar('erreur lors de l inscription', { variant: 'error' });
