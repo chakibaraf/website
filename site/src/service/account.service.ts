@@ -3,6 +3,7 @@ import Axios from "./caller.service";
  * localstorage
  */
 export const tokenName = "token-chakib";
+
 type DataUI = {
   password: string;
   nom: string;
@@ -41,10 +42,10 @@ const axiosGetArticles = () => {
 
 // send articles to save
 const axiosSendArticles = (data: any) => {
-  return Axios.post("/articles/card", data);
+  return Axios.post(`articles/cards`, data);
 };
 
-/******************************* */
+/************************************************************/
 let saveToken = (token: string) => {
   localStorage.setItem(tokenName, token);
 };
@@ -89,9 +90,11 @@ let isLoggedUser = () => {
 let getToken = () => {
   return localStorage.getItem(tokenName);
 };
+
 let getUserRole = () => {
   return localStorage.getItem("role") ?? ""; // Récupérer le rôle à partir du Local Storage
 };
+
 let hasRole = (role: string): boolean => {
   const userRoles = JSON.parse(
     localStorage.getItem("role") || "[]"

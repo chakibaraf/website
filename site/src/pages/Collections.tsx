@@ -28,6 +28,7 @@ export const Collections = () => {
   const [articleDisplayed, setArticleDisplayed] = useState<IArticle[]>([]);
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [search, setSearch] = useState("");
+    
 
   useEffect(() => {
     async function getArticles() {
@@ -107,16 +108,20 @@ export const Collections = () => {
           setSearch={setSearch}
           likefilter={likefilter}
           articles={articles}
-        />
+          
+           />
         <div className={containerStyle}>
           {articleDisplayed.map((article, i) => (
             <ArticleCard
               key={`card-collection-${i}`}
               article={article}
-              openModal={setArticleOpen}
-            />
+              openModal={setArticleOpen} onQuantityChange={function (quantity: number): void {
+                throw new Error("Function not implemented.");
+              } } 
+                           
+              />
           ))}
-
+          
           <Modal
             className={containerModal}
             isOpen={articleOpen !== undefined}

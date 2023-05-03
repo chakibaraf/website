@@ -13,7 +13,7 @@ export class Article implements IArticle{
     image;
     description;    
     liked;
-    quantity;
+    quantity?;
   
     constructor(
      name:string,

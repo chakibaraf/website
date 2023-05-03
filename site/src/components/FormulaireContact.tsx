@@ -22,7 +22,7 @@ export const FormulaireContact = () => {
     const handleFormSubmit: SubmitHandler<FormInputs> = async (data) => {
         try {
 
-            const response = await sendFormulaireService(data);
+             await sendFormulaireService(data);
             enqueueSnackbar('formuliare envoyé avec succés', {variant: 'success'});
             
             reset();

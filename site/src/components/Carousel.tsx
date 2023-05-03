@@ -6,14 +6,14 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import useMedia from "use-media";
 import Slider from "react-slick";
-import bigImage1 from '../assets/carousel/image-product-1.jpg';
-import bigImage2 from '../assets/carousel/image-product-2.jpg';
-import bigImage3 from '../assets/carousel/image-product-3.jpg';
-import bigImage4 from '../assets/carousel/image-product-4.jpg';
-import miniImage1 from '../assets/carousel/image-product-1-thumbnail.jpg';
-import miniImage2 from '../assets/carousel/image-product-2-thumbnail.jpg';
-import miniImage3 from '../assets/carousel/image-product-3-thumbnail.jpg';
-import miniImage4 from '../assets/carousel/image-product-4-thumbnail.jpg';
+import bigImage1 from '../assets/carouselimg/image-product-1.jpg';
+import bigImage2 from '../assets/carouselimg/image-product-2.jpg';
+import bigImage3 from '../assets/carouselimg/image-product-3.jpg';
+import bigImage4 from '../assets/carouselimg/image-product-4.jpg';
+import miniImage1 from '../assets/carouselimg/image-product-1-thumbnail.jpg';
+import miniImage2 from '../assets/carouselimg/image-product-2-thumbnail.jpg';
+import miniImage3 from '../assets/carouselimg/image-product-3-thumbnail.jpg';
+import miniImage4 from '../assets/carouselimg/image-product-4-thumbnail.jpg';
 
 
 export  const Carousel = () => {

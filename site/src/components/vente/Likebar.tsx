@@ -5,16 +5,28 @@ import { useState } from "react";
 import { IArticle } from "../../model/Article";
 import { enqueueSnackbar } from "notistack";
 import { accountService } from "../../service/account.service";
+
+
 interface Ilikebar {
   likefilter: Function;
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   articles: IArticle[];
+
+
+
 }
 
 export const Likebar = (props: Ilikebar) => {
+
+
+
+
   const [like, setLike] = useState(false);
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+
   const [showInput, setShowInput] = useState(false);
 
   const activateLikeFilter = () => {
@@ -29,6 +41,9 @@ export const Likebar = (props: Ilikebar) => {
         variant: "warning",
       });
 
+
+
+
     if (!email)
       return enqueueSnackbar("please enter your email !", {
         variant: "warning",
@@ -38,6 +53,10 @@ export const Likebar = (props: Ilikebar) => {
       const result = await accountService.axiosSendArticles({
         articles: selectedArticles,
         email,
+        message,
+
+
+
       });
       console.log(result);
       enqueueSnackbar("votre demande a etait bien envoyé !", {
@@ -49,6 +68,7 @@ export const Likebar = (props: Ilikebar) => {
   };
   return (
     <div>
+
       <div className="flex flex-row-reverse items-center bg-gradient-to-r from-yellow-400 to-orange-500">
         <Checkbox
           onClick={activateLikeFilter}
@@ -68,18 +88,26 @@ export const Likebar = (props: Ilikebar) => {
 
       {showInput && (
         <div className="flex flex-col items-center justify-center mt-10">
-          <p className="font-semibold">
-            {" "}
-            Veuillez renseignez votre mail et cliquer sur envoyez , pour
-            demander un devis{" "}
+          <p className="font-bold text-xl ">
+            veuillez renseigner votre mail avant d'envoyer votre panier 
+          
           </p>
-
+           <span className="font-normal">
+             * À fin d'être contacter pour etablir le devis *
+            </span>
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             placeholder="Votre email"
             className="mt-10"
           />
+          <input
+            onChange={(e) => setMessage(e.target.value)}
+            value={message}
+            placeholder="message"
+            className="mt-10"
+          />
+
           <button
             onClick={handleSendData}
             className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-md mt-3"
